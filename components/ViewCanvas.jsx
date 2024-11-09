@@ -26,13 +26,13 @@ export default function ViewCanvas() {
           overflow: 'hidden',
           pointerEvents: 'none',
           zIndex: 30,
-          background: 'red',
+          background: '#ececec',
         }}
         shadows
         dpr={[1, 1.5]}
         gl={{ antialias: true }}
         camera={{
-          fov: 30,
+          fov: 60,
         }}
       >
         {/* <color attach="background" args={['#ececec']} /> */}

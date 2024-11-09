@@ -56,7 +56,7 @@ export function AriModel(props) {
 
   return (
     <group {...props} ref={group} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
+      <group rotation={[-Math.PI / 2, 0, -Math.PI]}>
         <primitive object={nodes.Hips} />
         <skinnedMesh
           name="EyeLeft"
