@@ -36,6 +36,8 @@ export default function Home() {
     //     </section>
     //   </section>
     // </div>
-    <ViewCanvas />
+    <section className="w-screen  h-screen">
+      <ViewCanvas />
+    </section>
   )
 }

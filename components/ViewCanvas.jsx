@@ -4,12 +4,13 @@ import { Canvas } from '@react-three/fiber'
 import { Scroll, ScrollControls, View } from '@react-three/drei'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Leva } from 'leva'
 import Experience from './Experience'
 import { MotionConfig } from 'framer-motion'
 import { ScrollManager } from './ScrollManager'
 import { Interface } from './Interface'
+import { Menu } from './Menu'
 
 // adding loader without hydration error; we use it when it needs only.
 const Loader = dynamic(
@@ -21,6 +22,10 @@ export default function ViewCanvas() {
   const [section, setSection] = useState(0)
   const [started, setStarted] = useState(true)
   const [menuOpened, setMenuOpened] = useState(false)
+
+  useEffect(() => {
+    setMenuOpened(false)
+  }, [section])
 
   return (
     <>
@@ -35,21 +40,23 @@ export default function ViewCanvas() {
         }}
       >
         <Canvas
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            overflow: 'hidden',
-            pointerEvents: 'none',
-            zIndex: 30,
-            background: '#ececec',
-          }}
+          // style={{
+          //   position: 'fixed',
+          //   top: 0,
+          //   left: '50%',
+          //   transform: 'translateX(-50%)',
+          //   overflow: 'hidden',
+          //   pointerEvents: 'none',
+          //   zIndex: 30,
+          //   background: '#ececec',
+          //   width: '100%',
+          //   height: '100%',
+          // }}
           shadows
           dpr={[1, 1.5]}
           gl={{ antialias: true }}
           camera={{
-            fov: 60,
+            fov: 30,
           }}
         >
           {/* <color attach="background" args={['#ececec']} /> */}
@@ -72,6 +79,11 @@ export default function ViewCanvas() {
             </Scroll>
           </ScrollControls>
         </Canvas>
+        <Menu
+          onSectionChange={setSection}
+          menuOpened={menuOpened}
+          setMenuOpened={setMenuOpened}
+        />
         <Loader />
       </MotionConfig>
     </>
