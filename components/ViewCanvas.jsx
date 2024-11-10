@@ -29,7 +29,7 @@ export default function ViewCanvas() {
 
   return (
     <>
-      <Leva hidden />
+      <Leva />
       <MotionConfig
         transition={{
           type: 'spring',
@@ -59,7 +59,7 @@ export default function ViewCanvas() {
             fov: 30,
           }}
         >
-          {/* <color attach="background" args={['#ececec']} /> */}
+          <color attach="background" args={['black']} />
 
           {/* <Suspense fallback={null}>
           <View.Port />
@@ -71,7 +71,6 @@ export default function ViewCanvas() {
                 {started && (
                   <Experience section={section} menuOpened={menuOpened} />
                 )}
-                {/* // <Experience section={section} menuOpened={menuOpened} /> */}
               </Suspense>
             </Scroll>
             <Scroll html>
