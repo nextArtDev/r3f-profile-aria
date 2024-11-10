@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <ViewCanvas />
+        {/* <ViewCanvas /> */}
       </body>
     </html>
   )

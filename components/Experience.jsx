@@ -6,17 +6,52 @@ import {
   OrbitControls,
   Sky,
 } from '@react-three/drei'
-import React from 'react'
+import React, { useRef } from 'react'
 import { AriModel } from './AriModel'
 import { Leva, useControls } from 'leva'
 import RoomModel from './RoomModel'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Group } from 'three'
 
-function Experience() {
+gsap.registerPlugin(useGSAP, ScrollTrigger)
+
+const Experience = () => {
+  const roomRef = useRef()
+
   const { animation } = useControls({
     animation: {
       value: 'Gaming',
       options: ['Gaming', 'Standing', 'Falling'],
     },
+  })
+
+  useGSAP(() => {
+    if (!roomRef.current) return
+
+    const introTl = gsap.timeline({
+      defaults: {
+        duration: 3,
+        ease: 'back.out(1.4)',
+      },
+    })
+
+    const scrollTl = gsap.timeline({
+      defaults: {
+        duration: 2,
+      },
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.5,
+      },
+    })
+    scrollTl
+      // Rotate can group
+      .to(roomRef.current.rotation, { y: -1.7 })
+    // .to(roomRef.current.position, { x: 0, y: 10, z: 0 }, 0)
   })
   return (
     <>
@@ -24,7 +59,7 @@ function Experience() {
       {/* <Sky /> */}
       <ambientLight intensity={5} />
       {/* <Environment preset="sunset" /> */}
-      <group position-y={-1.3} rotation={[0, Math.PI / 2, 0]}>
+      <group ref={roomRef} position-y={-1.3} rotation={[0, -Math.PI / 2, 0]}>
         <ContactShadows
           opacity={0.45}
           scale={10}
