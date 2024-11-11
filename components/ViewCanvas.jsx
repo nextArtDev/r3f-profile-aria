@@ -19,7 +19,7 @@ const Loader = dynamic(
 )
 
 export default function ViewCanvas() {
-  const [section, setSection] = useState(0)
+  const [section, setSection] = useState(1)
   const [started, setStarted] = useState(true)
   const [menuOpened, setMenuOpened] = useState(false)
 
@@ -56,7 +56,7 @@ export default function ViewCanvas() {
           dpr={[1, 1.5]}
           gl={{ antialias: true }}
           camera={{
-            fov: 30,
+            fov: 40,
           }}
         >
           <color attach="background" args={['black']} />

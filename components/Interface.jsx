@@ -63,7 +63,9 @@ const AboutSection = (props) => {
           </svg>
         </section>
         <br />
-        <span className="bg-black px-1 italic">Aria Mehmanparast</span>
+        <span className="bg-black/20 text-white px-2 backdrop-blur-sm rounded-md  italic">
+          Mehmanparast
+        </span>
       </h1>
       <motion.p
         className="text-lg text-gray-600 mt-4"

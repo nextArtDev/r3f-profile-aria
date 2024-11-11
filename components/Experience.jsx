@@ -44,10 +44,15 @@ const Experience = (props) => {
   //     options: ['Gaming', 'Standing', 'Falling'],
   //   },
   // })
-  const { position, scale } = useControls({
-    position: { x: 0, y: 0, z: 0 },
-    scale: 1,
-  })
+  const { position, rotation, scale, ariposition, arirotation, ariscale } =
+    useControls({
+      position: { x: 0, y: 0, z: 0 },
+      rotation: { x: 0, y: 0, z: 0 },
+      scale: 1,
+      ariposition: { x: 0, y: 0, z: 0 },
+      arirotation: { x: 0, y: 0, z: 0 },
+      ariscale: 1,
+    })
   useEffect(() => {
     animate(cameraPositionX, menuOpened ? -5 : 0, {
       type: 'spring',
@@ -89,7 +94,7 @@ const Experience = (props) => {
     }
 
     state.camera.position.x = cameraPositionX.get()
-    state.camera.lookAt(cameraLookAtX.get(), 0, 0)
+    state.camera?.lookAt(cameraLookAtX.get(), 0, 0)
 
     // const position = new THREE.Vector3();
     if (section === 0) {
@@ -135,8 +140,8 @@ const Experience = (props) => {
   // })
   return (
     <>
-      <OrbitControls />
-      {/* <Sky /> */}
+      {/* <OrbitControls /> */}
+      <Sky />
       <ambientLight intensity={5} />
       {/* <Environment preset="sunset" /> */}
       <group ref={roomRef} position-y={-1.3} rotation={[0, -Math.PI / 2, 0]}>
@@ -148,10 +153,11 @@ const Experience = (props) => {
           resolution={256}
           color="#000000"
         />
+
         <motion.group
           ref={characterGroup}
-          // rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}
-          // scale={[officeScaleRatio, officeScaleRatio, officeScaleRatio]}
+          rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}
+          scale={[officeScaleRatio, officeScaleRatio, officeScaleRatio]}
           animate={'' + section}
           transition={{
             duration: 0.6,
@@ -197,20 +203,27 @@ const Experience = (props) => {
             },
           }}
         >
-          <AriModel animation={characterAnimation} scale={1.2} />
+          <AriModel
+            position={[ariposition.x, ariposition.y, ariposition.z]}
+            rotation={[arirotation.x, arirotation.y, arirotation.x]}
+            scale={ariscale}
+            animation={characterAnimation}
+            // scale={1.2}
+          />
           {/* <Avatar animation={characterAnimation} wireframe={section === 1} /> */}
         </motion.group>
+
         <ambientLight intensity={1} />
         <motion.group
-          // position={[
-          //   isMobile ? 0 : 1.5 * officeScaleRatio,
-          //   isMobile ? -viewport.height / 6 : 2,
-          //   3,
-          // ]}
-          // scale={[officeScaleRatio, officeScaleRatio, officeScaleRatio]}
+          position={[
+            isMobile ? 0 : 1.5 * officeScaleRatio,
+            isMobile ? -viewport.height / 6 : 2,
+            3,
+          ]}
+          scale={[officeScaleRatio, officeScaleRatio, officeScaleRatio]}
           // scale={0.6}
           // position={[-3, -5, 0]}
-          // rotation-y={Math.PI / 2}
+          rotation-y={Math.PI / 2}
           animate={{
             y: isMobile ? -viewport.height / 6 : 0,
           }}
@@ -221,6 +234,7 @@ const Experience = (props) => {
           <RoomModel
             section={section}
             position={[position.x, position.y, position.z]}
+            rotation={[rotation.x, rotation.y, rotation.z]}
             scale={scale}
           />
           <group
