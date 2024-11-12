@@ -56,13 +56,14 @@ export function AriModel(props) {
 
   return (
     <group {...props} ref={group} dispose={null}>
-      <axesHelper args={[5]} />
+      {/* <axesHelper args={[5]} /> */}
       <group
         position={[-2.22, 2.73, 6]}
         rotation={[-Math.PI / 2, 0.1, -Math.PI]}
       >
         <primitive object={nodes.Hips} />
         <skinnedMesh
+          frustumCulled="false"
           name="EyeLeft"
           geometry={nodes.EyeLeft.geometry}
           material={materials.Wolf3D_Eye}
@@ -71,6 +72,7 @@ export function AriModel(props) {
           morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences}
         />
         <skinnedMesh
+          frustumCulled="false"
           name="EyeRight"
           geometry={nodes.EyeRight.geometry}
           material={materials.Wolf3D_Eye}
@@ -79,6 +81,7 @@ export function AriModel(props) {
           morphTargetInfluences={nodes.EyeRight.morphTargetInfluences}
         />
         <skinnedMesh
+          frustumCulled="false"
           name="Wolf3D_Head"
           geometry={nodes.Wolf3D_Head.geometry}
           material={materials.Wolf3D_Skin}
@@ -87,6 +90,7 @@ export function AriModel(props) {
           morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
         />
         <skinnedMesh
+          frustumCulled="false"
           name="Wolf3D_Teeth"
           geometry={nodes.Wolf3D_Teeth.geometry}
           material={materials.Wolf3D_Teeth}
@@ -95,21 +99,25 @@ export function AriModel(props) {
           morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
         />
         <skinnedMesh
+          frustumCulled="false"
           geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
           material={materials.Wolf3D_Outfit_Bottom}
           skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
         />
         <skinnedMesh
+          frustumCulled="false"
           geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
           material={materials.Wolf3D_Outfit_Footwear}
           skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
         />
         <skinnedMesh
+          frustumCulled="false"
           geometry={nodes.Wolf3D_Outfit_Top.geometry}
           material={materials.Wolf3D_Outfit_Top}
           skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
         />
         <skinnedMesh
+          frustumCulled="false"
           geometry={nodes.Wolf3D_Hair.geometry}
           material={materials.Wolf3D_Hair}
           skeleton={nodes.Wolf3D_Hair.skeleton}

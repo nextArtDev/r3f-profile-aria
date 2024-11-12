@@ -29,7 +29,7 @@ export default function ViewCanvas() {
 
   return (
     <>
-      <Leva />
+      <Leva hidden />
       <MotionConfig
         transition={{
           type: 'spring',

@@ -73,12 +73,12 @@ const Experience = (props) => {
 
   const characterContainerAboutRef = useRef()
 
-  const [characterAnimation, setCharacterAnimation] = useState('Gaming')
+  const [characterAnimation, setCharacterAnimation] = useState('Falling')
   useEffect(() => {
     setCharacterAnimation('Falling')
     setTimeout(() => {
-      setCharacterAnimation(section === 0 ? 'Gaming' : 'Standing')
-    }, 600)
+      setCharacterAnimation(section === 0 || 1 ? 'Gaming' : 'Standing')
+    }, 200)
   }, [section])
 
   const characterGroup = useRef()
@@ -97,13 +97,14 @@ const Experience = (props) => {
     state.camera.position.x = cameraPositionX.get()
     state.camera?.lookAt(cameraLookAtX.get(), 0, 0)
 
-    // const position = new THREE.Vector3();
-    if (section === 0) {
+    // const position = new THREE.Vector3()
+    if (section === 0 || 1) {
+      // IMPORTANT:Getting Current Position
       characterContainerAboutRef.current.getWorldPosition(
         characterGroup.current.position
       )
     }
-    // console.log([position.x, position.y, position.z]);
+    // console.log([position.x, position.y, position.z])
 
     // const quaternion = new THREE.Quaternion();
     // characterContainerAboutRef.current.getWorldQuaternion(quaternion);
@@ -145,7 +146,16 @@ const Experience = (props) => {
       {/* <Sky /> */}
       <ambientLight intensity={5} />
       {/* <Environment preset="sunset" /> */}
-      <group ref={roomRef} position-y={-1.3} rotation={[0, -Math.PI / 2, 0]}>
+      <group
+        ref={roomRef}
+        position-y={section === 0 ? -1.3 : -5.5}
+        position-z={0}
+        rotation={[
+          0,
+          section === 0 ? (-2 * Math.PI) / 2.2 : (-2.2 * Math.PI) / 9,
+          0,
+        ]}
+      >
         <ContactShadows
           opacity={0.45}
           scale={10}
@@ -204,7 +214,7 @@ const Experience = (props) => {
             },
           }}
         >
-          {section === 1 && (
+          {/* {section === 1 && (
             <AriModel
               position={[ariposition.x, ariposition.y, ariposition.z]}
               rotation={[arirotation.x, arirotation.y, arirotation.x]}
@@ -213,7 +223,7 @@ const Experience = (props) => {
               // scale={1.2}
               // {section === 1}
             />
-          )}
+          )} */}
           {/* <Avatar animation={characterAnimation} wireframe={section === 1} /> */}
         </motion.group>
 
@@ -249,7 +259,7 @@ const Experience = (props) => {
             // rotation={[arirotation.x, arirotation.y, arirotation.z]}
             // position={[11, 2.3, 2.15]}
             // rotation={[0, 3, 3.5]}
-            position={[6.83, -1.74, -5.26]}
+            position={[6.83, -1.72, -5.39]}
             // rotation={[0, 3, 3.5]}
             scale={0.7}
             // position={[15, 5.35, -1.3]}
