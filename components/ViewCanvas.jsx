@@ -19,7 +19,7 @@ const Loader = dynamic(
 )
 
 export default function ViewCanvas() {
-  const [section, setSection] = useState(1)
+  const [section, setSection] = useState(0)
   const [started, setStarted] = useState(true)
   const [menuOpened, setMenuOpened] = useState(false)
 

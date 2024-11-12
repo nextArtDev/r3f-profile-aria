@@ -5,6 +5,7 @@ import {
   Environment,
   OrbitControls,
   Sky,
+  axesHelper,
   useScroll,
 } from '@react-three/drei'
 import React, { useRef, useState, useEffect } from 'react'
@@ -141,7 +142,7 @@ const Experience = (props) => {
   return (
     <>
       {/* <OrbitControls /> */}
-      <Sky />
+      {/* <Sky /> */}
       <ambientLight intensity={5} />
       {/* <Environment preset="sunset" /> */}
       <group ref={roomRef} position-y={-1.3} rotation={[0, -Math.PI / 2, 0]}>
@@ -203,13 +204,16 @@ const Experience = (props) => {
             },
           }}
         >
-          <AriModel
-            position={[ariposition.x, ariposition.y, ariposition.z]}
-            rotation={[arirotation.x, arirotation.y, arirotation.x]}
-            scale={ariscale}
-            animation={characterAnimation}
-            // scale={1.2}
-          />
+          {section === 1 && (
+            <AriModel
+              position={[ariposition.x, ariposition.y, ariposition.z]}
+              rotation={[arirotation.x, arirotation.y, arirotation.x]}
+              scale={ariscale}
+              animation={characterAnimation}
+              // scale={1.2}
+              // {section === 1}
+            />
+          )}
           {/* <Avatar animation={characterAnimation} wireframe={section === 1} /> */}
         </motion.group>
 
@@ -237,12 +241,30 @@ const Experience = (props) => {
             rotation={[rotation.x, rotation.y, rotation.z]}
             scale={scale}
           />
+
           <group
             ref={characterContainerAboutRef}
             name="CharacterSpot"
-            position={[0.07, 0.16, -0.57]}
-            rotation={[-Math.PI, 0.42, -Math.PI]}
-          ></group>
+            // position={[ariposition.x, ariposition.y, ariposition.z]}
+            // rotation={[arirotation.x, arirotation.y, arirotation.z]}
+            // position={[11, 2.3, 2.15]}
+            // rotation={[0, 3, 3.5]}
+            position={[6.83, -1.74, -5.26]}
+            // rotation={[0, 3, 3.5]}
+            scale={0.7}
+            // position={[15, 5.35, -1.3]}
+          >
+            <AriModel
+              // // position={[-7.081, ariposition.y, 6.371]}
+              // // rotation={[arirotation.x, arirotation.y, arirotation.z]}
+              // position={[ariposition.x, ariposition.y, ariposition.z]}
+              // rotation={[arirotation.x, arirotation.y, arirotation.z]}
+              // position={[15, 5.35, -1.3]}
+              scale={ariscale}
+              animation={characterAnimation}
+              // scale={1.2}
+            />
+          </group>
         </motion.group>
 
         {/* <mesh

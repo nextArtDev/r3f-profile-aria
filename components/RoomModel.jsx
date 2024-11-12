@@ -10,8 +10,8 @@ export default function RoomModel(props) {
     <group {...props} dispose={null}>
       <group
         position={[6, 0, 0]}
-        rotation={section === 0 ? 0 : -Math.PI / 2}
-        scale={section < 2 ? 1.5 : 0}
+        // rotation={section === 0 ? 0 : -Math.PI / 2}
+        // scale={section < 2 ? 1.5 : 0}
       >
         <mesh
           castShadow
