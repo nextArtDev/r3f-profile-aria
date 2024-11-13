@@ -29,6 +29,9 @@ importers:
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
+      jotai:
+        specifier: ^2.10.2
+        version: 2.10.2(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
       leva:
         specifier: ^0.9.35
         version: 0.9.35(@types/react@18.3.12)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -1528,6 +1531,18 @@ packages:
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
+
+  jotai@2.10.2:
+    resolution: {integrity: sha512-DqsBTlRglIBviuJLfK6JxZzpd6vKfbuJ4IqRCz70RFEDeZf46Fcteb/FXxNr1UnoxR5oUy3oq7IE8BrEq0G5DQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -3874,6 +3889,11 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
+
+  jotai@2.10.2(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    optionalDependencies:
+      '@types/react': 18.3.12
+      react: 19.0.0-rc-66855b96-20241106
 
   js-tokens@4.0.0: {}
 

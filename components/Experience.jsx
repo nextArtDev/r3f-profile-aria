@@ -20,6 +20,8 @@ import { Group } from 'three'
 import { motion } from 'framer-motion-3d'
 import { animate, useMotionValue } from 'framer-motion'
 import { useFrame, useThree } from '@react-three/fiber'
+import { Background } from './Background'
+import { Projects } from './Projects'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -77,7 +79,9 @@ const Experience = (props) => {
   useEffect(() => {
     setCharacterAnimation('Falling')
     setTimeout(() => {
-      setCharacterAnimation(section === 0 || 1 ? 'Gaming' : 'Standing')
+      setCharacterAnimation(
+        section === 0 || 1 ? 'Gaming' : section === 2 ? 'Falling' : 'Standing'
+      )
     }, 200)
   }, [section])
 
@@ -146,6 +150,7 @@ const Experience = (props) => {
       {/* <Sky /> */}
       <ambientLight intensity={5} />
       {/* <Environment preset="sunset" /> */}
+      <Background />
       <group
         ref={roomRef}
         position-y={section === 0 ? -1.3 : -5.5}
@@ -164,39 +169,45 @@ const Experience = (props) => {
           resolution={256}
           color="#000000"
         />
-
         <motion.group
           ref={characterGroup}
-          rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}
+          // rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}
           scale={[officeScaleRatio, officeScaleRatio, officeScaleRatio]}
           animate={'' + section}
           transition={{
             duration: 0.6,
           }}
           variants={{
-            0: {
-              scaleX: officeScaleRatio,
-              scaleY: officeScaleRatio,
-              scaleZ: officeScaleRatio,
-            },
-            1: {
-              y: -viewport.height + 0.5,
-              x: isMobile ? 0.3 : 0,
-              z: 7,
-              rotateX: 0,
-              rotateY: isMobile ? -Math.PI / 2 : 0,
-              rotateZ: 0,
-              scaleX: isMobile ? 1.5 : 1,
-              scaleY: isMobile ? 1.5 : 1,
-              scaleZ: isMobile ? 1.5 : 1,
-            },
+            // 0: {
+            //   scaleX: officeScaleRatio,
+            //   scaleY: officeScaleRatio,
+            //   scaleZ: officeScaleRatio,
+            // },
+            // 1: {
+            //   y: -viewport.height + 0.5,
+            //   x: isMobile ? 0.3 : 0,
+            //   z: 7,
+            //   rotateX: 0,
+            //   rotateY: isMobile ? -Math.PI / 2 : 0,
+            //   rotateZ: 0,
+            //   scaleX: isMobile ? 1.5 : 1,
+            //   scaleY: isMobile ? 1.5 : 1,
+            //   scaleZ: isMobile ? 1.5 : 1,
+            // },
             2: {
-              x: isMobile ? -1.4 : -2,
+              x: isMobile ? -1.4 : 2,
               y: -viewport.height * 2 + 0.5,
               z: 0,
-              rotateX: 0,
-              rotateY: Math.PI / 2,
-              rotateZ: 0,
+
+              x: ariposition.x,
+              y: ariposition.y,
+              z: ariposition.z,
+              // rotateX: 0,
+              // rotateY: Math.PI / 2,
+              // rotateZ: 0,
+              rotateX: arirotation.x,
+              rotateY: arirotation.y,
+              rotateZ: arirotation.z,
               scaleX: 1,
               scaleY: 1,
               scaleZ: 1,
@@ -214,16 +225,15 @@ const Experience = (props) => {
             },
           }}
         >
-          {/* {section === 1 && (
-            <AriModel
-              position={[ariposition.x, ariposition.y, ariposition.z]}
-              rotation={[arirotation.x, arirotation.y, arirotation.x]}
-              scale={ariscale}
-              animation={characterAnimation}
-              // scale={1.2}
-              // {section === 1}
-            />
-          )} */}
+          <AriModel
+            position={[ariposition.x, ariposition.y, ariposition.z]}
+            rotation={[arirotation.x, arirotation.y, arirotation.z]}
+            scale={ariscale}
+            animation={characterAnimation}
+            // scale={1.2}
+            // {section === 1}
+          />
+
           {/* <Avatar animation={characterAnimation} wireframe={section === 1} /> */}
         </motion.group>
 
@@ -276,7 +286,7 @@ const Experience = (props) => {
             />
           </group>
         </motion.group>
-
+        <Projects />
         {/* <mesh
           scale={5}
           rotation={[-Math.PI * 0.5, 0, 0]}

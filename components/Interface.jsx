@@ -1,7 +1,7 @@
 // import { ValidationError, useForm } from "@formspree/react";
 import { motion } from 'framer-motion'
-// import { useAtom } from "jotai";
-// import { currentProjectAtom, projects } from './Projects'
+import { useAtom } from 'jotai'
+import { currentProjectAtom, projects } from './Projects'
 
 const Section = (props) => {
   const { children, mobileTop } = props
@@ -34,7 +34,7 @@ const Section = (props) => {
 export const Interface = (props) => {
   const { setSection } = props
   return (
-    <div className="flex flex-col items-center w-screen">
+    <div className="flex h-full flex-col items-center   w-screen">
       <AboutSection setSection={setSection} />
       <SkillsSection />
       <ProjectsSection />
@@ -134,22 +134,22 @@ const skills = [
 const languages = [
   {
     title: ' Deutsch',
-    level: 100,
+    level: 60,
   },
   {
     title: '🇺🇸 English',
     level: 80,
   },
-  {
-    title: '🇯🇵 Japanese',
-    level: 20,
-  },
+  // {
+  //   title: '🇯🇵 Japanese',
+  //   level: 20,
+  // },
 ]
 
 const SkillsSection = () => {
   return (
     <Section>
-      <motion.div className="w-full" whileInView={'visible'}>
+      <motion.div className="w-full h-screen" whileInView={'visible'}>
         <h2 className="text-3xl md:text-5xl font-bold text-white">Skills</h2>
         <div className="mt-8 space-y-4">
           {skills.map((skill, index) => (
@@ -246,20 +246,20 @@ const SkillsSection = () => {
 }
 
 const ProjectsSection = () => {
-  // const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
+  const [currentProject, setCurrentProject] = useAtom(currentProjectAtom)
 
-  // const nextProject = () => {
-  //   setCurrentProject((currentProject + 1) % projects.length);
-  // };
+  const nextProject = () => {
+    setCurrentProject((currentProject + 1) % projects.length)
+  }
 
-  // const previousProject = () => {
-  //   setCurrentProject((currentProject - 1 + projects.length) % projects.length);
-  // };
+  const previousProject = () => {
+    setCurrentProject((currentProject - 1 + projects.length) % projects.length)
+  }
 
   return (
     <Section>
-      <div className="flex w-full h-full gap-8 items-center justify-center">
-        {/* <button
+      <div className=" flex w-full h-full gap-8 items-center justify-center">
+        <button
           className="hover:text-indigo-600 transition-colors"
           onClick={previousProject}
         >
@@ -271,7 +271,7 @@ const ProjectsSection = () => {
           onClick={nextProject}
         >
           Next →
-        </button> */}
+        </button>
       </div>
     </Section>
   )
