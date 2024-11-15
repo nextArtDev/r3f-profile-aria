@@ -11,6 +11,7 @@ import { MotionConfig } from 'framer-motion'
 import { ScrollManager } from './ScrollManager'
 import { Interface } from './Interface'
 import { Menu } from './Menu'
+import { LoadingScreen } from './LoadingScreen'
 
 // adding loader without hydration error; we use it when it needs only.
 const Loader = dynamic(
@@ -29,6 +30,7 @@ export default function ViewCanvas() {
 
   return (
     <>
+      <LoadingScreen started={started} setStarted={setStarted} />
       <Leva hidden />
       <MotionConfig
         transition={{
@@ -83,7 +85,7 @@ export default function ViewCanvas() {
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened}
         />
-        <Loader />
+        {/* <Loader /> */}
       </MotionConfig>
     </>
   )

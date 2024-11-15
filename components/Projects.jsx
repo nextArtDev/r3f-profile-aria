@@ -57,7 +57,7 @@ const Project = (props) => {
     <group {...props}>
       <mesh
         position-z={-0.001}
-        onClick={() => window.open(project.url, '_blank')}
+        // onClick={() => window.open(project.url, '_blank')}
         ref={background}
       >
         <planeGeometry args={[2.2, 2]} />

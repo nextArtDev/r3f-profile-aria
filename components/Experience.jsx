@@ -199,9 +199,9 @@ const Experience = (props) => {
               y: -viewport.height * 2 + 0.5,
               z: 0,
 
-              x: ariposition.x,
-              y: ariposition.y,
-              z: ariposition.z,
+              // x: ariposition.x,
+              // y: ariposition.y,
+              // z: ariposition.z,
               // rotateX: 0,
               // rotateY: Math.PI / 2,
               // rotateZ: 0,
@@ -213,7 +213,7 @@ const Experience = (props) => {
               scaleZ: 1,
             },
             3: {
-              y: -viewport.height * 3 + 1,
+              y: -viewport.height * 3 + 2,
               x: 0.24,
               z: 8.5,
               rotateX: 0,
@@ -226,7 +226,8 @@ const Experience = (props) => {
           }}
         >
           <AriModel
-            position={[ariposition.x, ariposition.y, ariposition.z]}
+            // position={[ariposition.x, ariposition.y, ariposition.z]}
+            position={[0, -viewport.height * 3 + 1, 0]}
             rotation={[arirotation.x, arirotation.y, arirotation.z]}
             scale={ariscale}
             animation={characterAnimation}
@@ -278,6 +279,7 @@ const Experience = (props) => {
               // // position={[-7.081, ariposition.y, 6.371]}
               // // rotation={[arirotation.x, arirotation.y, arirotation.z]}
               // position={[ariposition.x, ariposition.y, ariposition.z]}
+              // position={section == 3 && [0, -viewport.height * 3 + 1, 0]}
               // rotation={[arirotation.x, arirotation.y, arirotation.z]}
               // position={[15, 5.35, -1.3]}
               scale={ariscale}
@@ -286,7 +288,6 @@ const Experience = (props) => {
             />
           </group>
         </motion.group>
-        <Projects />
         {/* <mesh
           scale={5}
           rotation={[-Math.PI * 0.5, 0, 0]}
@@ -294,8 +295,9 @@ const Experience = (props) => {
         >
           <planeGeometry />
           <meshStandardMaterial color={'green'} />
-        </mesh> */}
+          </mesh> */}
       </group>
+      {/* <Projects /> */}
     </>
   )
 }
