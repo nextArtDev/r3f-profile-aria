@@ -1,11 +1,13 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, useVideoTexture } from '@react-three/drei'
 
 export default function RoomModel(props) {
   const { section } = props
-  const { nodes, materials } = useGLTF('/assets/3dModels/RoomModel-v1.glb')
+
+  const { nodes, materials } = useGLTF('/assets/3dModels/room_v2.glb')
+  const textureVideo = useVideoTexture('assets/vscode.mp4')
   return (
     <group {...props} dispose={null}>
       <group
@@ -57,16 +59,26 @@ export default function RoomModel(props) {
         <mesh
           castShadow
           receiveShadow
+          geometry={nodes.screen_1.geometry}
+          material={materials.PaletteMaterial001}
+          position={[-1.991, 2.326, -0.754]}
+          rotation={[0, -1.571, 0]}
+        >
+          <meshBasicMaterial map={textureVideo} toneMapped={false} />
+        </mesh>
+        <mesh
+          castShadow
+          receiveShadow
           geometry={nodes.Object_3.geometry}
           material={materials['Material.001']}
         />
         {/* //.. */}
-        <mesh
+        {/* <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_6_1.geometry}
           material={materials['Material.001']}
-        />
+        /> */}
         {/* <mesh
         castShadow
         receiveShadow
@@ -114,4 +126,4 @@ export default function RoomModel(props) {
   )
 }
 
-useGLTF.preload('/assets/3dModels/RoomModel-v1.glb')
+useGLTF.preload('/assets/3dModels/room_v2.glb')
