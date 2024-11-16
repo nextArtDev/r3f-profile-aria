@@ -7,7 +7,7 @@ export default function RoomModel(props) {
   const { section } = props
 
   const { nodes, materials } = useGLTF('/assets/3dModels/room_v2.glb')
-  const textureVideo = useVideoTexture('assets/vscode.mp4')
+  const textureVideo = useVideoTexture('/assets/vscode.mp4')
   return (
     <group {...props} dispose={null}>
       <group

@@ -12,6 +12,7 @@ import { ScrollManager } from './ScrollManager'
 import { Interface } from './Interface'
 import { Menu } from './Menu'
 import { LoadingScreen } from './LoadingScreen'
+import Scene from './SkyDive/Scene'
 
 // adding loader without hydration error; we use it when it needs only.
 const Loader = dynamic(
@@ -66,15 +67,19 @@ export default function ViewCanvas() {
           {/* <Suspense fallback={null}>
           <View.Port />
         </Suspense> */}
-          <ScrollControls pages={4} damping={0.1}>
+          <ScrollControls pages={5} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
               <Suspense>
                 {started && (
-                  <Experience section={section} menuOpened={menuOpened} />
+                  <>
+                    <Experience section={section} menuOpened={menuOpened} />
+                    {/* <Scene sentence={'blackCherry is good enough'} /> */}
+                  </>
                 )}
               </Suspense>
             </Scroll>
+
             <Scroll html>
               {started && <Interface setSection={setSection} />}
             </Scroll>
