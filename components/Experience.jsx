@@ -286,6 +286,21 @@ const Experience = (props) => {
               animation={characterAnimation}
               // scale={1.2}
             />
+            {section > 2 && (
+              <AriModel
+                // // position={[-7.081, ariposition.y, 6.371]}
+                // // rotation={[arirotation.x, arirotation.y, arirotation.z]}
+                // position={[ariposition.x, ariposition.y, ariposition.z]}
+                position={[-23, -32, 0]}
+                rotation={[-Math.PI / 2, Math.PI / 2, 2]}
+                // position={section == 3 && [0, -viewport.height * 3 + 1, 0]}
+                // rotation={[arirotation.x, arirotation.y, arirotation.z]}
+                // position={[15, 5.35, -1.3]}
+                scale={3}
+                animation={'Falling'}
+                // scale={1.2}
+              />
+            )}
           </group>
         </motion.group>
         {/* <mesh
