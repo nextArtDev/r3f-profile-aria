@@ -150,12 +150,12 @@ const SkillsSection = () => {
   return (
     <Section>
       <motion.div className="w-full h-screen" whileInView={'visible'}>
-        <h2 className="text-3xl md:text-5xl font-bold text-white">Skills</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-black">Skills</h2>
         <div className="mt-8 space-y-4">
           {skills.map((skill, index) => (
             <div className="w-full md:w-64" key={index}>
               <motion.h3
-                className="text-lg md:text-xl font-bold text-gray-100"
+                className="text-lg md:text-xl font-bold text-gray-900"
                 initial={{
                   opacity: 0,
                 }}
@@ -259,7 +259,7 @@ const ProjectsSection = () => {
   return (
     <Section>
       <div className=" flex w-full h-full gap-8 items-center justify-center">
-        <button
+        {/* <button
           className="hover:text-indigo-600 transition-colors"
           onClick={previousProject}
         >
@@ -271,7 +271,7 @@ const ProjectsSection = () => {
           onClick={nextProject}
         >
           Next →
-        </button>
+        </button> */}
       </div>
     </Section>
   )
@@ -340,5 +340,50 @@ const ContactSection = () => {
   //     </div>
   //   </Section>
   // );
-  return <h2>Part3</h2>
+  return (
+    <Section className="pt-[200vh] text-4xl text-bold mix-blend-multiply ">
+      <p
+        className="absolute top-[60vh] left-[0.5em] text-red-400 text-7xl font-bold"
+        style={{ position: 'absolute', top: '60vh', left: '0.5em' }}
+      >
+        Minecraft
+      </p>
+      <p
+        className="text-7xl font-bold"
+        style={{ position: 'absolute', top: '120vh', left: '60vw' }}
+      >
+        Grand Theft Auto V
+      </p>
+      <p
+        style={{
+          position: 'absolute',
+          top: '198.5vh',
+          left: '0.5vw',
+          fontSize: '40vw',
+        }}
+      >
+        Elden Ring
+      </p>
+      <p
+        style={{
+          position: 'absolute',
+          top: '278.5vh',
+          left: '20vw',
+          // fontSize: '40vw',
+        }}
+      >
+        Call of Duty: Warzone
+      </p>
+      <p
+        style={{
+          position: 'absolute',
+          top: '320.5vh',
+          left: '0.5vw',
+          // fontSize: '40vw',
+        }}
+      >
+        Apex Legends
+      </p>
+    </Section>
+  )
 }

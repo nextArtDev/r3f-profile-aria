@@ -62,7 +62,7 @@ export default function ViewCanvas() {
           dpr={[1, 1.5]}
           gl={{ antialias: true }}
           camera={{
-            fov: 40,
+            fov: 45,
           }}
         >
           <color attach="background" args={['black']} />

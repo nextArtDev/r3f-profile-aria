@@ -42,7 +42,7 @@ const Images = () => {
   })
 
   return (
-    <group position={[0, -14.6, 0]} ref={groupRef}>
+    <group position={[0, -15.5, 0]} ref={groupRef}>
       <Image
         url="/assets/images/16.jpg"
         // scaling when in view width 4 height full and z:1
@@ -53,7 +53,7 @@ const Images = () => {
         onClick={() => router.push('/')}
       />
       <Image
-        position={[-2.3, -height, 2]}
+        position={[-2, -height, 2]}
         scale={[1, 3, 1]}
         // url="/assets/images/2.jpg"
         url="/assets/images/11.webp"
@@ -65,8 +65,8 @@ const Images = () => {
         url="/assets/images/12.webp"
       />
       <Image
-        position={[0.75, -height, 3.5]}
-        scale={1.5}
+        position={[0.55, -height, 3.5]}
+        scale={1.1}
         // url="/assets/images/4.jpg"
         url="/assets/images/13.avif"
       />
@@ -79,7 +79,7 @@ const Images = () => {
       />
       <Image
         position={[0, -height * 2 - height / 4, 0]}
-        scale={[width, height / 2, 1]}
+        scale={[width, height, 1]}
         // url="/assets/images/6.jpg"
         url="/assets/images/15.webp"
       />

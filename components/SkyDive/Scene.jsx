@@ -100,11 +100,11 @@ export default function Scene({ sentence }) {
     })
 
     scrollTl
-      // .to("body", {
-      //   backgroundColor: "#C0F0F5",
-      //   overwrite: "auto",
-      //   duration: 0.1,
-      // })
+      .to('body', {
+        backgroundColor: '#C0F0F5',
+        overwrite: 'auto',
+        duration: 0.1,
+      })
       .to(cloudsRef.current.position, { z: 0, duration: 0.3 }, 0)
       .to(canRef.current.position, {
         x: 0,
